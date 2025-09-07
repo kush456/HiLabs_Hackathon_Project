@@ -657,7 +657,9 @@ const AnalyticsDashboard: React.FC = () => {
                 <div key={index} className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-400/30 rounded-xl p-6 hover:from-purple-500/20 hover:to-pink-500/20 hover:shadow-xl transition-all duration-300">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
-                      <h4 className="font-black text-white text-lg mb-2">{file.step}</h4>
+                      <h4 className="font-black text-white text-lg mb-2">
+                        {file.step === 'existing_file' ? 'duplicate_file' : file.step}
+                      </h4>
                       <p className="text-sm text-gray-400 break-all">{file.filename}</p>
                     </div>
                     <button

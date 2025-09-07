@@ -27,7 +27,7 @@ const HeroSection = () => {
             {/* Badge */}
             <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-pink-500/20 to-violet-500/20 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium text-white border border-pink-300/30 shadow-lg">
               <Sparkles className="w-4 h-4 text-yellow-400" />
-              <span>AI-Powered Healthcare Analytics</span>
+              <span>ClearCred</span>
             </div>
 
             {/* Headline */}
@@ -45,7 +45,7 @@ const HeroSection = () => {
               {/* Subheading */}
               <p className="text-xl text-gray-200 max-w-xl leading-relaxed">
                 Instantly identify and resolve provider data quality issues. Ensure accuracy and compliance with our 
-                <span className="text-cyan-400 font-semibold"> AI-powered analytics dashboard</span>.
+                <span className="text-cyan-400 font-semibold"> HealthCare analytics dashboard</span>.
               </p>
             </div>
 
@@ -75,22 +75,6 @@ const HeroSection = () => {
                 <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/20 to-pink-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="flex items-center space-x-6 pt-4">
-              <div className="flex items-center space-x-2 text-sm text-gray-300">
-                <CheckCircle className="w-5 h-5 text-emerald-400" />
-                <span>SOC 2 Certified</span>
-              </div>
-              <div className="flex items-center space-x-2 text-sm text-gray-300">
-                <CheckCircle className="w-5 h-5 text-cyan-400" />
-                <span>Enterprise Ready</span>
-              </div>
-              <div className="flex items-center space-x-2 text-sm text-gray-300">
-                <CheckCircle className="w-5 h-5 text-pink-400" />
-                <span>24/7 Support</span>
-              </div>
             </div>
           </div>
 
@@ -239,7 +223,7 @@ const FloatingCharts = () => {
       <div className="absolute bottom-16 right-16 bg-gradient-to-br from-orange-900/90 to-red-900/90 backdrop-blur-lg rounded-2xl p-4 shadow-2xl border border-orange-400/30 animate-float animation-delay-1000">
         <div className="flex items-center space-x-3">
           <div className="w-3 h-3 bg-gradient-to-r from-orange-400 to-red-500 rounded-full animate-pulse"></div>
-          <span className="text-sm font-bold text-white">3 Duplicates Found</span>
+          <span className="text-sm font-bold text-white">12 Duplicates Found</span>
         </div>
       </div>
 
@@ -249,7 +233,7 @@ const FloatingCharts = () => {
           <Zap className="w-4 h-4 text-yellow-400" />
           <span className="text-xs font-bold text-white">Processing Speed</span>
         </div>
-        <div className="text-lg font-black text-white">16.3s</div>
+        <div className="text-lg font-black text-white">{`<`}2000ms</div>
         <div className="text-xs text-purple-300">Lightning fast</div>
       </div>
     </>
