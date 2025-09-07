@@ -12,6 +12,7 @@ from handlers import (
 from routes.deduplication import deduplication_bp
 from routes.standardization import standardization_bp
 from routes.misspelling import misspelling_bp
+from routes.qualityScore import qualityScore_bp
 
 app = Flask(__name__)
 CORS(app)
@@ -25,6 +26,7 @@ os.makedirs(app.config['OUTPUT_FOLDER'], exist_ok=True)
 app.register_blueprint(standardization_bp)
 app.register_blueprint(misspelling_bp)
 app.register_blueprint(deduplication_bp)
+app.register_blueprint(qualityScore_bp)
 
 
 @app.route('/', methods=['GET'])

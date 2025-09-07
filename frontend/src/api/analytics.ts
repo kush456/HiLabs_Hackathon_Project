@@ -26,6 +26,9 @@ export const fetchProcessingResults = async () => {
   // Map npi_validation or npiValidation if present
   const npiValidation = stats.npi_validation || stats.npiValidation || undefined;
 
+  // Map quality metrics
+  const qualityMetrics = stats.quality_metrics || undefined;
+
   return {
     totalColumns,
     beforeCount: initialCount,
@@ -37,6 +40,7 @@ export const fetchProcessingResults = async () => {
     statusDistribution: stats.status_distribution || { ca_status: {}, ny_status: {} },
     providerDistribution: stats.provider_distribution || { ca_providers: 0, ny_providers: 0, total_providers: 0 },
     pipelineSteps: stats.pipeline_steps || [],
-    npiValidation
+    npiValidation,
+    qualityMetrics
   };
 };

@@ -223,6 +223,13 @@ def complete_pipeline():
     # Calculate final combined statistics
     final_combined_rows = len(final_ca_data) + len(final_ny_data)
     
+    # Calculate quality score
+    from routes.qualityScore import calculate_quality_score
+    quality_metrics, quality_error = calculate_quality_score()
+    if quality_error:
+        print(f"[deduplication.py] Quality score calculation error: {quality_error}")
+        quality_metrics = {'quality_score': 0, 'misspelling_ratio': 0, 'duplication_ratio': 0}
+    
     # Calculate status distribution for pie charts
     ca_status_dist = {}
     ny_status_dist = {}
@@ -345,7 +352,8 @@ def complete_pipeline():
                 'invalid': int(ny_invalid_npi),
                 'total': int(len(final_ny_data))
             }
-        }
+        },
+        'quality_metrics': quality_metrics
     }
 
     return jsonify({

@@ -77,6 +77,14 @@ const AnalyticsDashboard: React.FC = () => {
       records: number;
       description?: string;
     }>;
+    qualityMetrics?: {
+      quality_score: number;
+      misspelling_ratio: number;
+      duplication_ratio: number;
+      total_corrections: number;
+      duplicates_count: number;
+      initial_rows: number;
+    };
   } | null>(null);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -305,8 +313,10 @@ const AnalyticsDashboard: React.FC = () => {
           <div className="bg-gradient-to-br from-emerald-900/50 to-green-900/50 backdrop-blur-lg rounded-2xl shadow-2xl border border-emerald-400/30 p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-emerald-300">Data Quality</p>
-                <p className="text-3xl font-black text-white">98.5%</p>
+                <p className="text-sm font-medium text-emerald-300">Data Quality Score</p>
+                <p className="text-3xl font-black text-white">
+                  {pipelineStats?.qualityMetrics?.quality_score ? `${pipelineStats.qualityMetrics.quality_score.toFixed(1)}%` : '—'}
+                </p>
               </div>
               <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-green-500 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/50">
                 <CheckCircle className="w-6 h-6 text-white" />
@@ -314,7 +324,15 @@ const AnalyticsDashboard: React.FC = () => {
             </div>
             <div className="mt-4 flex items-center text-sm">
               <Shield className="w-4 h-4 text-emerald-400 mr-1" />
-              <span className="text-emerald-400 font-semibold">Excellent quality</span>
+              <span className="text-emerald-400 font-semibold">
+                {pipelineStats?.qualityMetrics?.quality_score 
+                  ? pipelineStats.qualityMetrics.quality_score >= 90 
+                    ? 'Excellent quality' 
+                    : pipelineStats.qualityMetrics.quality_score >= 70 
+                      ? 'Good quality' 
+                      : 'Needs improvement'
+                  : 'Quality assessment pending'}
+              </span>
             </div>
           </div>
 

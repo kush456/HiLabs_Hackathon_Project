@@ -100,13 +100,23 @@ def handle_misspelling():
 
             # count how many values actually changed
             corrections_count[col] = (before != after).sum()
-            # Save output
-            output_path = os.path.join('uploads', 'misspelling_corrected_provider_roster.csv')
-            df.to_csv(output_path, index=False)
+            
+        # Save output
+        output_path = os.path.join('uploads', 'misspelling_corrected_provider_roster.csv')
+        df.to_csv(output_path, index=False)
+        
+        # Save corrections count for quality score calculation
+        corrections_json_path = os.path.join('uploads', 'corrections_count.json')
+        # Convert numpy int64 to regular int for JSON serialization
+        corrections_count_json = {k: int(v) for k, v in corrections_count.items()}
+        with open(corrections_json_path, 'w', encoding='utf-8') as f:
+            json.dump(corrections_count_json, f)
+            
         return jsonify({
             'status': 'success',
             'message': 'Misspelling correction completed',
             'corrected_file': output_path,
+            'corrections_count': corrections_count_json,
             'shape': df.shape,
             'columns': list(df.columns)
         })
